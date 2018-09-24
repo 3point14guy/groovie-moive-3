@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+    @movie = Movie.new
 
     if params[:title] != "" && !params[:title].nil? 
       response = HTTParty.get("http://www.omdbapi.com/?t=#{params[:title]}&apikey=#{ENV['omdb_api_key']}&")
@@ -12,9 +13,8 @@ class MoviesController < ApplicationController
       @year = response["Year"]
       @genre = response["Genre"]
       @plot = response["Plot"]
-      @rottenSource = response["Ratings"][1]["Source"]
-      @rottenValue = response["Ratings"][1]["Value"]
-      @imdbValue = response["imdbRating"]
+      @rotten_value = response["Ratings"][1]["Value"]
+      @imdb_value = response["imdbRating"]
       @poster = response["Poster"]
       @website = response["Website"]
     end
@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/new
   def new
-    @movie = Movie.new
+    
   end
 
   # GET /movies/1/edit

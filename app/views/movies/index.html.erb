@@ -10,12 +10,27 @@
     <% end %>
   </div>
 </div>
-
-<p>Title: <%= @title%></p>
 <br>
-<img src="<%= @poster %>">
-<p><%= @rottenSource %>: <%= @rottenValue %></p>
-<p>imDB rating:<%= @imdbValue %></p>
+<% if @title != nil && @title != "" %>
+  <div class="row">
+    <div class="col-md-6">
+      <p> <%= link_to @title, @website %></p>
+      <%= image_tag @poster %>
+    </div>
+    <div class="col-md-6">
+      <br>
+      <br>
+      <p>Release year: <%= @year %></p>
+      <p>Genre: <%= @genre %></p>
+      <p>Rotten Tomatoes rating: <%= @rotten_value %></p>
+      <p>imDB rating: <%= @imdb_value %></p>
+      <p><%= @plot %></p>      
+    </div>     
+  </div>
+
+<%= render 'form', movie: @movie %>
+
+<% end %>
 <table>
   <thead>
     <tr>
@@ -23,10 +38,8 @@
       <th>Year</th>
       <th>Genre</th>
       <th>Plot</th>
-      <th>Poster</th>
       <th>Rotten</th>
       <th>Imdb</th>
-      <th>Website</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,14 +47,12 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.title %></td>
+        <td><%= link_to movie.title, movie.website %></td>
         <td><%= movie.year %></td>
         <td><%= movie.genre %></td>
         <td><%= movie.plot %></td>
-        <td><%= movie.poster %></td>
         <td><%= movie.rotten %></td>
         <td><%= movie.imdb %></td>
-        <td><%= movie.website %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>

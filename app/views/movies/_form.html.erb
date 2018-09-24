@@ -12,46 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :movie_title %>
+    <%= form.hidden_field :title, value: @title %>
   </div>
 
   <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year, id: :movie_year %>
+    <%= form.hidden_field :year, value: @year %>
   </div>
 
   <div class="field">
-    <%= form.label :genre %>
-    <%= form.text_field :genre, id: :movie_genre %>
+    <%= form.hidden_field :genre, value: @genre %>
   </div>
 
   <div class="field">
-    <%= form.label :plot %>
-    <%= form.text_field :plot, id: :movie_plot %>
+    <%= form.hidden_field :plot, value: @plot %>
   </div>
 
   <div class="field">
-    <%= form.label :poster %>
-    <%= form.text_field :poster, id: :movie_poster %>
+    <%= form.hidden_field :poster, value: @poster %>
   </div>
 
   <div class="field">
-    <%= form.label :rotten %>
-    <%= form.number_field :rotten, id: :movie_rotten %>
+    <%= form.hidden_field :rotten, value: @rotten_value %>
   </div>
 
   <div class="field">
-    <%= form.label :imdb %>
-    <%= form.text_field :imdb, id: :movie_imdb %>
+    <%= form.hidden_field :imdb, value: @imdb_value %>
   </div>
 
   <div class="field">
-    <%= form.label :website %>
-    <%= form.text_field :website, id: :movie_website %>
+    <%= form.hidden_field :website, value: @website %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add" %>
   </div>
 <% end %>

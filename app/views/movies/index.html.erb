@@ -1,66 +1,70 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Movies</h1>
 
-<div class="card">
-  <div class="form-inline">
-    <%= form_tag index_path do %>
-    <%= text_field_tag :title, nil, placeholder: "enter movie title", class: "form-control-sm" %>
-    <%= submit_tag "Search", class: "btn btn-light btn-small" %>
-    <% end %>
+<p>Enter a movie title to begin rating movies.</p>
+
+<br>
+<% if @title != nil && @title != "" %>
+<div class="card bg-light">
+  <div class="row movie-card">
+    <div class="col-md-2">
+      <%= image_tag @poster, width: 150 %>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-8">
+          <p> <%= link_to @title, @website %></p>
+          <p>Released: <%= @year %></p>
+          <p><%= @genre %></p>
+        </div>
+        <div class="col-md-4">
+          <p>You:</p>
+          <p>Your Groovie friends:</p>
+          <p>Rotten Tomatoes: <%= @rotten %>%</p>
+          <p>imDB: <%= @imdb %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <br> 
+          <p><%= @plot %></p>
+          <%= render 'form', movie: @movie %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <br>
-<% if @title != nil && @title != "" %>
-  <div class="row">
-    <div class="col-md-6">
-      <p> <%= link_to @title, @website %></p>
-      <%= image_tag @poster %>
-    </div>
-    <div class="col-md-6">
-      <br>
-      <br>
-      <p>Release year: <%= @year %></p>
-      <p>Genre: <%= @genre %></p>
-      <p>Rotten Tomatoes rating: <%= @rotten_value %></p>
-      <p>imDB rating: <%= @imdb_value %></p>
-      <p><%= @plot %></p>      
-    </div>     
-  </div>
-
-<%= render 'form', movie: @movie %>
-
 <% end %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Genre</th>
-      <th>Plot</th>
-      <th>Rotten</th>
-      <th>Imdb</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= link_to movie.title, movie.website %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.genre %></td>
-        <td><%= movie.plot %></td>
-        <td><%= movie.rotten %></td>
-        <td><%= movie.imdb %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<% @movies.each do |movie| %>
+<div class="card bg-light">
+  <div class="row movie-card">
+    <div class="col-md-2">
+      <%= image_tag movie.poster, width: 150 %>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-8">
+          <p> <%= link_to movie.title, movie.website %></p>
+          <p>Released: <%= movie.year %></p>
+          <p><%= movie.genre %></p>
+        </div>
+        <div class="col-md-4">
+          <p>You:</p>
+          <p>Your Groovie friends:</p> 
+          <p>Rotten Tomatoes: <%= movie.rotten %>%</p>
+          <p>imDB: <%= movie.imdb %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <br> 
+          <p><%= movie.plot %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
-
-<%= link_to 'New Movie', new_movie_path %>
+<% end %>

@@ -5,6 +5,19 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+
+    if params[:title] != "" && !params[:title].nil? 
+      response = HTTParty.get("http://www.omdbapi.com/?t=#{params[:title]}&apikey=#{ENV['omdb_api_key']}&")
+      @title = response["Title"]
+      @year = response["Year"]
+      @genre = response["Genre"]
+      @plot = response["Plot"]
+      @rottenSource = response["Ratings"][1]["Source"]
+      @rottenValue = response["Ratings"][1]["Value"]
+      @imdbValue = response["imdbRating"]
+      @poster = response["Poster"]
+      @website = response["Website"]
+    end
   end
 
   # GET /movies/1

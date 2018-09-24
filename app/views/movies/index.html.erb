@@ -2,6 +2,20 @@
 
 <h1>Movies</h1>
 
+<div class="card">
+  <div class="form-inline">
+    <%= form_tag index_path do %>
+    <%= text_field_tag :title, nil, placeholder: "enter movie title", class: "form-control-sm" %>
+    <%= submit_tag "Search", class: "btn btn-light btn-small" %>
+    <% end %>
+  </div>
+</div>
+
+<p>Title: <%= @title%></p>
+<br>
+<img src="<%= @poster %>">
+<p><%= @rottenSource %>: <%= @rottenValue %></p>
+<p>imDB rating:<%= @imdbValue %></p>
 <table>
   <thead>
     <tr>

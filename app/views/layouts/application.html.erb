@@ -24,10 +24,10 @@
           <% if user_signed_in? %>
             <li class="nav-item dropdown"><span class="caret"></span>
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <% if current_user.avatar.blank? == false %>
-                  <%= image_tag current_user.avatar.url, size:25, class: "user-pic-nav" %>
-                <% end %>
-                @<%= current_user.username %>
+                <%# if current_user.avatar.blank? == false %>
+                  <%#= image_tag current_user.avatar.url, size:25%>
+                <%# end %>
+                <%= current_user.username %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
@@ -44,7 +44,7 @@
       </div>
     </nav>    
   	<!-- to display error messages from Devise -->
-		<p class="notice"><%= notice %></p>
+
 		<p class="alert"><%= alert %></p>
 		<div class="container">
     	<%= yield %>

@@ -41,6 +41,9 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
+        if user_signed_in?
+          format.html { redirect_to logged_in_path, notice: 'Movie was successfully created.' }
+        end
         format.html { redirect_to movies_path, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else

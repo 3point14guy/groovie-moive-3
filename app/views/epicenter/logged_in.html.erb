@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h5>Welcome back <%= current_user.username %></h5>
 
 <p>Enter a movie title to begin rating movies.</p>
 
@@ -36,11 +35,35 @@
 </div>
 <br>
 <% end %>
-<div class="row movie-card">
+
 <% @movies.each do |movie| %>
+<div class="card bg-light">
+  <div class="row movie-card">
     <div class="col-md-2">
       <%= image_tag movie.poster, width: 150 %>
     </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-8">
+          <p> <%= link_to movie.title, movie.website %></p>
+          <p>Released: <%= movie.year %></p>
+          <p><%= movie.genre %></p>
+        </div>
+        <div class="col-md-4">
+          <p>You:</p>
+          <p>Your Groovie friends:</p> 
+          <p>Rotten Tomatoes: <%= movie.rotten %>%</p>
+          <p>imDB: <%= movie.imdb %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <br> 
+          <p><%= movie.plot %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <% end %>
-</div>

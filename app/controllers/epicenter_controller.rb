@@ -21,5 +21,12 @@ class EpicenterController < ApplicationController
   end
 
   def friends
+  	@friends = []
+
+  	User.all.each do |friend|
+  		if current_user.following.include?(friend.id)
+  			@friends.push(friend)
+  		end
+  	end
   end
 end

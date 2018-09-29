@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'all_users' => 'epicenter#all_users'
 
-  get 'epicenter/friends'
+  get 'groovie_friends' => 'epicenter#friends'
 
 	
 	get 'index' => "movies#index"

@@ -5,4 +5,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # specifies that the data type for following will be an array.  unable to do this with rails g scaffold or rails g model
+  serialize :following, Array
 end

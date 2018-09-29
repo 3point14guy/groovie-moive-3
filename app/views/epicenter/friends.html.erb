@@ -1,2 +1,9 @@
-<h1>Epicenter#friends</h1>
-<p>Find me in app/views/epicenter/friends.html.erb</p>
+<h4>Your Groovie Friends...</h4>
+
+<div>
+	<% @friends.each do |friend| %>
+		<p><%= friend.username %></p>
+		<p>Movies reviewed: <%= %></p>
+		<p>Average rating: <%= %></p>
+	<% end %>
+</div>

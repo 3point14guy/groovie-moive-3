@@ -29,4 +29,19 @@ class EpicenterController < ApplicationController
   		end
   	end
   end
+
+  def add_friend
+	  current_user.following.push(params[:id].to_i)
+  	current_user.save
+
+  	# redirect_to show_user_path(id: params[:id])  	
+  	redirect_to all_users_path  	
+  end
+
+  def remove_friend
+  	current_user.following.delete(params[:id].to_i)
+  	current_user.save
+  	 # redirect_to show_user_path(id: params[:id])  	
+  	redirect_to all_users_path
+  end
 end

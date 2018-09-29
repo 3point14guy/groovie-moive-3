@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   get 'groovie_friends' => 'epicenter#friends'
 
+  get 'add_friend' => 'epicenter#add_friend'
+  get 'remove_friend' => 'epicenter#remove_friend'
+
 	
 	get 'index' => "movies#index"
 	post 'index' => "movies#index"
